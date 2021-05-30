@@ -1,27 +1,25 @@
-package com.exam.useful.dto.posts;
+package com.exam.useful.domain.post.dto;
 
-import com.exam.useful.domain.posts.Posts;
+import com.exam.useful.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Getter
-public class PostsSaveDto {
+public class PostSaveDto {
     private String author;
     private String title;
     private String content;
 
     @Builder
-    public PostsSaveDto(String author, String title, String content) {
+    public PostSaveDto(String author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
     }
 
-    public Posts toEntity(){
+    public Post toEntity(){
         // 변경된 필드들을 대입하고 빌드
-        return Posts.builder()
+        return Post.builder()
                 .author(author)
                 .title(title)
                 .content(content)

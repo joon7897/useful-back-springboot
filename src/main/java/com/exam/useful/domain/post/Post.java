@@ -1,4 +1,4 @@
-package com.exam.useful.domain.posts;
+package com.exam.useful.domain.post;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +12,10 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Getter
-public class Posts {
+@Table(name="tb_post")
+public class Post {
     @Id @GeneratedValue
+    @Column(name = "post_id")
     private Long id;
 
     @Column(nullable = false)
@@ -34,7 +36,7 @@ public class Posts {
     private LocalDateTime modifyDate;
 
     @Builder
-    public Posts(String author, String title, String content) {
+    public Post(String author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;

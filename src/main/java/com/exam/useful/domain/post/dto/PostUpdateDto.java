@@ -1,17 +1,16 @@
-package com.exam.useful.dto.posts;
+package com.exam.useful.domain.post.dto;
+
 
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Getter
-public class PostsUpdateDto {
+public class PostUpdateDto {
     private String title;
     private String content;
 
     @Builder
-    public PostsUpdateDto(String title, String content) {
+    public PostUpdateDto(String title, String content) {
         this.title = title;
         this.content = content;
     }
