@@ -42,8 +42,8 @@ public class GoodsService {
         JSONParser parser = new JSONParser(); // String to JSON
         JSONObject json = (JSONObject) parser.parse(str);
         Map<String, Object> productInfo = (Map<String, Object>) json.get("productInfo");
-//        newPrice = Integer.parseInt(productInfo.get("price").toString());
-        newPrice = 9999;
+        newPrice = Integer.parseInt(productInfo.get("price").toString());
+//        newPrice = 9999;
 
         // 2) 기존데이터 → goods
         Goods goods = goodsRepository.findAllByGoodsNo(goodsNo);
