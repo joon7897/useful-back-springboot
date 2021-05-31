@@ -118,41 +118,7 @@ public class Goods {
         this.regDm = regDm;
     }
 
-    public void update(String goodsNm, String goodsNmEng, int saleStatCl, int sex, String accBuyYn, int itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, int normalPrice, int price, String regDm, String brand, String optKindCd, String brandNm, String brandNmEng, int sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, int estimateCnt, String comId, String img, int goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, int limitedMinQty, int limitedMaxQty, String usedYn, String offlineGoodsYn) {
-        this.goodsNm = goodsNm;
-        this.goodsNmEng = goodsNmEng;
-        this.saleStatCl = saleStatCl;
-        this.sex = sex;
-        this.accBuyYn = accBuyYn;
-        this.itemCatCd = itemCatCd;
-        this.category = category;
-        this.baseCategoryName = baseCategoryName;
-        this.seasonTypeNm = seasonTypeNm;
-        this.similarNo = similarNo;
-        this.normalPrice = normalPrice;
+    public void update(int price) {
         this.price = price;
-        this.regDm = regDm;
-        this.brand = brand;
-        this.optKindCd = optKindCd;
-        this.brandNm = brandNm;
-        this.brandNmEng = brandNmEng;
-        this.sizeOptKind = sizeOptKind;
-        this.sizeOptKindNm = sizeOptKindNm;
-        this.offlineComId = offlineComId;
-        this.season = season;
-        this.goodsType = goodsType;
-        this.estimateCnt = estimateCnt;
-        this.comId = comId;
-        this.img = img;
-        this.goodsSub = goodsSub;
-        this.restockYn = restockYn;
-        this.ordersGraphYn = ordersGraphYn;
-        this.esPageviewYn = esPageviewYn;
-        this.ptnDcYn = ptnDcYn;
-        this.limitedQtyYn = limitedQtyYn;
-        this.limitedMinQty = limitedMinQty;
-        this.limitedMaxQty = limitedMaxQty;
-        this.usedYn = usedYn;
-        this.offlineGoodsYn = offlineGoodsYn;
     }
 }

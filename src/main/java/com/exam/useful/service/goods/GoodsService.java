@@ -1,5 +1,6 @@
 package com.exam.useful.service.goods;
 
+import com.exam.config.constants.Constants;
 import com.exam.config.util.StringUtil;
 import com.exam.useful.domain.goods.Goods;
 import com.exam.useful.repository.GoodsRepository;
@@ -13,78 +14,97 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class GoodsService {
     private final GoodsRepository goodsRepository;
     private final String MUSINSA_GOODS_URL = "https://store.musinsa.com/app/goods/";
 
-    /**
-     * 상품정보 조회
-     * @param goodsNo
-     * @return
-     */
     @SneakyThrows
     public String getMusinsaGoods(String goodsNo) {
+        String result = "";
+        String str = "";
+        int newPrice = 0;
+
+        // 1) 크롤링 → crawMap
         Document doc = Jsoup.connect(MUSINSA_GOODS_URL+goodsNo).get();
         Elements scripts = doc.select("script"); // script 리스트 가져오기
-        Goods goods = null;
-
         for (Element script : scripts) { // 모든 <script> 태그
-            String str = String.valueOf(script);
-            if(str.contains("stateAll = ")){ // "stateAll" 포함
+            str = String.valueOf(script);
+            if (str.contains("stateAll = ")) { // "stateAll" 포함
                 str = str.substring(str.indexOf("{\"params\"")); // 앞부분 자르기
                 str = str.substring(0, str.indexOf(";")); // 뒷부분 자르기
-
-                System.out.println("===========================================================================================");
-                JSONParser parser = new JSONParser(); // String to JSON
-                JSONObject json = (JSONObject) parser.parse(str);
-                JSONObject productInfo = (JSONObject) json.get("productInfo");
-                System.out.println("===========================================================================================");
-
-                goods = Goods.of(
-                        StringUtil.nvl(productInfo.get("goods_no")),
-                        StringUtil.nvl(productInfo.get("goods_nm")),
-                        StringUtil.nvl(productInfo.get("goods_nm_eng")),
-                        StringUtil.nvl(productInfo.get("sale_stat_cl")),
-                        StringUtil.nvl(productInfo.get("sex")),
-                        StringUtil.nvl(productInfo.get("acc_buy_yn")),
-                        StringUtil.nvl(productInfo.get("item_cat_cd")),
-                        StringUtil.nvl(productInfo.get("category")),
-                        StringUtil.nvl(productInfo.get("base_category_name")),
-                        StringUtil.nvl(productInfo.get("season_type_nm")),
-                        StringUtil.nvl(productInfo.get("similar_no")),
-                        StringUtil.nvl(productInfo.get("normal_price")),
-                        StringUtil.nvl(productInfo.get("price")),
-                        StringUtil.nvl(productInfo.get("brand")),
-                        StringUtil.nvl(productInfo.get("opt_kind_cd")),
-                        StringUtil.nvl(productInfo.get("brand_nm")),
-                        StringUtil.nvl(productInfo.get("brand_nm_eng")),
-                        StringUtil.nvl(productInfo.get("size_opt_kind")),
-                        StringUtil.nvl(productInfo.get("size_opt_kind_nm")),
-                        StringUtil.nvl(productInfo.get("offline_com_id")),
-                        StringUtil.nvl(productInfo.get("season")),
-                        StringUtil.nvl(productInfo.get("goods_type")),
-                        StringUtil.nvl(productInfo.get("estimate_cnt")),
-                        StringUtil.nvl(productInfo.get("com_id")),
-                        StringUtil.nvl(productInfo.get("img")),
-                        StringUtil.nvl(productInfo.get("goods_sub")),
-                        StringUtil.nvl(productInfo.get("restock_yn")),
-                        StringUtil.nvl(productInfo.get("orders_graph_yn")),
-                        StringUtil.nvl(productInfo.get("es_pageview_yn")),
-                        StringUtil.nvl(productInfo.get("ptn_dc_yn")),
-                        StringUtil.nvl(productInfo.get("limited_qty_yn")),
-                        StringUtil.nvl(productInfo.get("limited_min_qty")),
-                        StringUtil.nvl(productInfo.get("limited_max_qty")),
-                        StringUtil.nvl(productInfo.get("used_yn")),
-                        StringUtil.nvl(productInfo.get("offline_goods_yn")),
-                        StringUtil.nvl(productInfo.get("reg_dm"))
-                );
-
-            } else {
-                // error logging
+                break;
             }
         }
-        return goodsRepository.save(goods).getGoodsNo();
+        JSONParser parser = new JSONParser(); // String to JSON
+        JSONObject json = (JSONObject) parser.parse(str);
+        Map<String, Object> productInfo = (Map<String, Object>) json.get("productInfo");
+//        newPrice = Integer.parseInt(productInfo.get("price").toString());
+        newPrice = 9999;
+
+        // 2) 기존데이터 → goods
+        Goods goods = goodsRepository.findAllByGoodsNo(goodsNo);
+
+        //= 기존 + 가격변동 ? 수정 : 생성
+        if(goods != null){
+            // 수정
+            if(goods.getPrice() != newPrice){
+                goods.update(newPrice);
+                result = Constants.UPDATE + goodsRepository.save(goods).getGoodsNo();
+            }
+        }else{
+            // 생성
+            goods = Goods.of(
+                    StringUtil.nvl(productInfo.get("goods_no")),
+                    StringUtil.nvl(productInfo.get("goods_nm")),
+                    StringUtil.nvl(productInfo.get("goods_nm_eng")),
+                    StringUtil.nvl(productInfo.get("sale_stat_cl")),
+                    StringUtil.nvl(productInfo.get("sex")),
+                    StringUtil.nvl(productInfo.get("acc_buy_yn")),
+                    StringUtil.nvl(productInfo.get("item_cat_cd")),
+                    StringUtil.nvl(productInfo.get("category")),
+                    StringUtil.nvl(productInfo.get("base_category_name")),
+                    StringUtil.nvl(productInfo.get("season_type_nm")),
+                    StringUtil.nvl(productInfo.get("similar_no")),
+                    StringUtil.nvl(productInfo.get("normal_price")),
+                    StringUtil.nvl(productInfo.get("price")),
+                    StringUtil.nvl(productInfo.get("brand")),
+                    StringUtil.nvl(productInfo.get("opt_kind_cd")),
+                    StringUtil.nvl(productInfo.get("brand_nm")),
+                    StringUtil.nvl(productInfo.get("brand_nm_eng")),
+                    StringUtil.nvl(productInfo.get("size_opt_kind")),
+                    StringUtil.nvl(productInfo.get("size_opt_kind_nm")),
+                    StringUtil.nvl(productInfo.get("offline_com_id")),
+                    StringUtil.nvl(productInfo.get("season")),
+                    StringUtil.nvl(productInfo.get("goods_type")),
+                    StringUtil.nvl(productInfo.get("estimate_cnt")),
+                    StringUtil.nvl(productInfo.get("com_id")),
+                    StringUtil.nvl(productInfo.get("img")),
+                    StringUtil.nvl(productInfo.get("goods_sub")),
+                    StringUtil.nvl(productInfo.get("restock_yn")),
+                    StringUtil.nvl(productInfo.get("orders_graph_yn")),
+                    StringUtil.nvl(productInfo.get("es_pageview_yn")),
+                    StringUtil.nvl(productInfo.get("ptn_dc_yn")),
+                    StringUtil.nvl(productInfo.get("limited_qty_yn")),
+                    StringUtil.nvl(productInfo.get("limited_min_qty")),
+                    StringUtil.nvl(productInfo.get("limited_max_qty")),
+                    StringUtil.nvl(productInfo.get("used_yn")),
+                    StringUtil.nvl(productInfo.get("offline_goods_yn")),
+                    StringUtil.nvl(productInfo.get("reg_dm"))
+            );
+            result = Constants.INSERT + goodsRepository.save(goods).getGoodsNo();
+        }
+        return result;
+    }
+
+    public int saveGoods(Goods goods){
+        return 0;
+    }
+
+    public int updateGoods(Map<String, String> crawMap){
+        return 0;
     }
 }
