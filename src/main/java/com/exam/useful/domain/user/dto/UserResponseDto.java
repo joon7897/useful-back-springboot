@@ -7,19 +7,19 @@ import lombok.Getter;
 public class UserResponseDto {
     private String email;
     private String password;
-    private String name;
-    private String nickName;
-    private String birthday;
-    private String gender;
-    private String phone;
+    private String userName;
+//    private String nickName;
+//    private String birthday;
+//    private String gender;
+//    private String phone;
 
     public UserResponseDto(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.name = user.getName();
-        this.nickName = user.getNickName();
-        this.birthday = user.getBirthday();
-        this.gender = user.getGender();
-        this.phone = user.getPhone();
+        this.userName = user.getUserName();
+//        this.nickName = user.getNickName();
+//        this.birthday = user.getBirthday();
+//        this.gender = user.getGender();
+//        this.phone = user.getPhone();
     }
 }

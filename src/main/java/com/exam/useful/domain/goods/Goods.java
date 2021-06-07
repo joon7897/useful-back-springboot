@@ -5,15 +5,13 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter
+// @MappedSuperclass -> 수정/생성일자는 부모 클래스로 따로 빼서 상속처리
 @Table(name = "tb_goods")
 public class Goods {
 
@@ -118,7 +116,7 @@ public class Goods {
         this.regDm = regDm;
     }
 
-    public void update(int price) {
+    public void updatePrice(int price) {
         this.price = price;
     }
 }

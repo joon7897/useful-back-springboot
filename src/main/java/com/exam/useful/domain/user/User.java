@@ -1,81 +1,61 @@
 package com.exam.useful.domain.user;
 
-import com.exam.useful.domain.user.dto.UserUpdateDto;
+import com.exam.useful.service.user.ERole;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
-@Table(name="tb_user")
+@Data
+@Table(name="tb_user", uniqueConstraints = {@UniqueConstraint(name = "NAME_EMAIL_UNIQUE", columnNames = {"USERNAME", "EMAIL"})})
 public class User {
     @Id @GeneratedValue
     @Column(name = "user_id")
-    private Long id;
+    private String id;
 
     @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
+    @NotBlank
+    @Length(min = 4)
     private String password;
 
-    @Column(nullable = false)
-    private String name;
+    @Transient // DB에 반영되지 않고 Object에서만 관리하도록 설정
+    @NotBlank
+    private String confirmPassword;
 
     @Column(nullable = false)
-    private String nickName;
+    @NotBlank
+    @Length(min = 4)
+    private String userName;
 
     @Column(nullable = false)
-    private String birthday;
+    @NotBlank
+    @Email
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    private ERole role;
 
     @Column(nullable = false)
-    private String gender;
+    private Boolean useYn;
 
-    @Column(nullable = false)
-    private String phone;
-
-    @Column(nullable = false)
     @CreationTimestamp
     private LocalDateTime insertDate;
 
-    @Column(nullable = false)
-    @UpdateTimestamp
-    private LocalDateTime modifyDate;
 
     @Builder
-    public User(String email, String password, String name, String nickName, String birthday, String gender, String phone) {
+    public User(String password, String userName, String email, ERole role, Boolean useYn) {
+        this.password = password;
+        this.userName = userName;
         this.email = email;
-        this.password = password;
-        this.name = name;
-        this.nickName = nickName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phone = phone;
-    }
-
-    public void update(String password, String name, String nickName, String birthday, String gender, String phone) {
-        this.password = password;
-        this.name = name;
-        this.nickName = nickName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phone = phone;
-    }
-
-    public void update(UserUpdateDto dto) {
-        this.password = dto.getPassword();
-        this.name = dto.getName();
-        this.nickName = dto.getNickName();
-        this.birthday = dto.getBirthday();
-        this.gender = dto.getGender();
-        this.phone = dto.getPhone();
+        this.role = role;
+        this.useYn = useYn;
     }
 }

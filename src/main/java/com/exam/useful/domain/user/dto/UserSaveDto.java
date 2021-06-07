@@ -1,39 +1,39 @@
 package com.exam.useful.domain.user.dto;
 
 import com.exam.useful.domain.user.User;
+import com.exam.useful.service.user.ERole;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 public class UserSaveDto {
-    private String email;
     private String password;
-    private String name;
-    private String nickName;
-    private String birthday;
-    private String gender;
-    private String phone;
+    private String userName;
+    private String email;
+    private ERole role;
+    private Boolean useYn;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Builder
-    public UserSaveDto(String email, String password, String name, String nickName, String birthday, String gender, String phone) {
-        this.email = email;
+    public UserSaveDto(String password, String userName, String email, ERole role, Boolean useYn) {
         this.password = password;
-        this.name = name;
-        this.nickName = nickName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.phone = phone;
+        this.userName = userName;
+        this.email = email;
+        this.role = role;
+        this.useYn = useYn;
     }
 
     public User toEntity(){
         return User.builder()
+                .password(passwordEncoder.encode(password))
+                .userName(userName)
                 .email(email)
-                .password(password)
-                .name(name)
-                .nickName(nickName)
-                .birthday(birthday)
-                .gender(gender)
-                .phone(phone)
+                .role(role)
+                .useYn(true)
                 .build();
     }
 }
