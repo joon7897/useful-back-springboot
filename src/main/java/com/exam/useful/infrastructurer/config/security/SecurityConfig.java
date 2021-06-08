@@ -1,4 +1,4 @@
-package com.exam.config.security;
+package com.exam.useful.infrastructurer.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

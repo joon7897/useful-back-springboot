@@ -1,7 +1,7 @@
 package com.exam.useful.service.goods;
 
-import com.exam.config.constants.Constants;
-import com.exam.config.util.StringUtil;
+import com.exam.useful.infrastructurer.config.constants.Constants;
+import com.exam.useful.infrastructurer.config.util.StringUtil;
 import com.exam.useful.domain.goods.Goods;
 import com.exam.useful.repository.GoodsRepository;
 import lombok.RequiredArgsConstructor;

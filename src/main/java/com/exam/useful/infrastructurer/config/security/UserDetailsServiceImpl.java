@@ -1,4 +1,4 @@
-package com.exam.config.security;
+package com.exam.useful.infrastructurer.config.security;
 
 import com.exam.useful.domain.user.User;
 import com.exam.useful.repository.UserRepository;

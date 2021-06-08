@@ -1,4 +1,4 @@
-package com.exam.config.util;
+package com.exam.useful.infrastructurer.config.util;
 
 public class StringUtil {
 
