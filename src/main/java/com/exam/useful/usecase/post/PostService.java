@@ -1,4 +1,4 @@
-package com.exam.useful.service.post;
+package com.exam.useful.usecase.post;
 
 import com.exam.useful.domain.post.Post;
 import com.exam.useful.repository.PostRepository;

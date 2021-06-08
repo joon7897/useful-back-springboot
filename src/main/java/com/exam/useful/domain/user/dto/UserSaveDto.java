@@ -1,7 +1,7 @@
 package com.exam.useful.domain.user.dto;
 
 import com.exam.useful.domain.user.User;
-import com.exam.useful.service.user.ERole;
+import com.exam.useful.usecase.user.ERole;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

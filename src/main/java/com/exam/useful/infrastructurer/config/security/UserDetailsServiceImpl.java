@@ -1,7 +1,7 @@
 package com.exam.useful.infrastructurer.config.security;
 
 import com.exam.useful.domain.user.User;
-import com.exam.useful.repository.UserRepository;
+import com.exam.useful.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

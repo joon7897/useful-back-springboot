@@ -1,6 +1,6 @@
-package com.exam.useful.controller.goods;
+package com.exam.useful.adapter.goods;
 
-import com.exam.useful.service.goods.GoodsService;
+import com.exam.useful.usecase.goods.GoodsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
