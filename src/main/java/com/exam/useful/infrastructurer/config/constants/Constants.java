@@ -1,4 +1,4 @@
-package com.exam.config.constants;
+package com.exam.useful.infrastructurer.config.constants;
 
 public class Constants {
 

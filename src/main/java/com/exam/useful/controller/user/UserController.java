@@ -4,17 +4,22 @@ import com.exam.useful.domain.user.User;
 import com.exam.useful.domain.user.dto.UserResponseDto;
 import com.exam.useful.domain.user.dto.UserSaveDto;
 import com.exam.useful.service.user.UserServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "[User] User 관련 API")
 @RequestMapping("/api/user")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
     private final UserServiceImpl userService;
-    
+
+
+    @Operation(summary = "[User] userList API" , description = " UserList API Description")
     @GetMapping({"", "/"})
     public List<UserResponseDto> findAll() {
         return userService.getUsers();
