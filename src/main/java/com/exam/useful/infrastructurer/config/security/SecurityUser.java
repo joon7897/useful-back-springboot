@@ -1,4 +1,4 @@
-package com.exam.config.security;
+package com.exam.useful.infrastructurer.config.security;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;

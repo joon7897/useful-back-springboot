@@ -1,4 +1,4 @@
-package com.exam.config.util;
+package com.exam.useful.infrastructurer.config.util;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
