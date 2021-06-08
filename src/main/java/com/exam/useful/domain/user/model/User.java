@@ -39,8 +39,18 @@ public class User {
     private Role role;
 
     @Column(nullable = false)
-    private Boolean useYn;
+    private boolean useYn;
 
-    @CreationTimestamp
-    private LocalDateTime insertDate;
+    private User(String id, String password, String userName, String email, Role role, boolean useYn) {
+        this.id = id;
+        this.password = password;
+        this.userName = userName;
+        this.email = email;
+        this.role = role;
+        this.useYn = useYn;
+    }
+
+    public static User createUser(String id, String password, String userName, String email, Role role, boolean useYn) {
+        return new User(id, password, userName, email, role, useYn);
+    }
 }

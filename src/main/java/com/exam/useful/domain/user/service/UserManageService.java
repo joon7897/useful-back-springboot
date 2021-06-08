@@ -11,6 +11,10 @@ public class UserManageService {
 
     private final UserRepository userRepository;
 
+    public User findUser() {
+        return null;
+    }
+
     public void persistUser(User user) {
         userRepository.save(user);
     }
