@@ -1,4 +1,4 @@
-package com.exam.useful.service.goods;
+package com.exam.useful.usecase.goods;
 
 import com.exam.useful.infrastructurer.config.constants.Constants;
 import com.exam.useful.infrastructurer.config.util.StringUtil;

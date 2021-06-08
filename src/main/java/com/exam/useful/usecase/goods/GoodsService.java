@@ -1,4 +1,4 @@
-package com.exam.useful.service.goods;
+package com.exam.useful.usecase.goods;
 
 import org.springframework.stereotype.Service;
 

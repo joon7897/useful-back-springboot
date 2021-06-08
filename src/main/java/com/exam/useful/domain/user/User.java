@@ -1,8 +1,9 @@
 package com.exam.useful.domain.user;
 
-import com.exam.useful.service.user.ERole;
+import com.exam.useful.usecase.user.ERole;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
@@ -13,8 +14,8 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @NoArgsConstructor
-@Data
 @Table(name="tb_user", uniqueConstraints = {@UniqueConstraint(name = "NAME_EMAIL_UNIQUE", columnNames = {"USERNAME", "EMAIL"})})
 public class User {
     @Id @GeneratedValue
@@ -25,10 +26,6 @@ public class User {
     @NotBlank
     @Length(min = 4)
     private String password;
-
-    @Transient // DB에 반영되지 않고 Object에서만 관리하도록 설정
-    @NotBlank
-    private String confirmPassword;
 
     @Column(nullable = false)
     @NotBlank
@@ -48,14 +45,4 @@ public class User {
 
     @CreationTimestamp
     private LocalDateTime insertDate;
-
-
-    @Builder
-    public User(String password, String userName, String email, ERole role, Boolean useYn) {
-        this.password = password;
-        this.userName = userName;
-        this.email = email;
-        this.role = role;
-        this.useYn = useYn;
-    }
 }

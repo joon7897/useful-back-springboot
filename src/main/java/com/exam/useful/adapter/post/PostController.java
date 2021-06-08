@@ -1,9 +1,9 @@
-package com.exam.useful.controller.post;
+package com.exam.useful.adapter.post;
 
 import com.exam.useful.domain.post.dto.PostResponseDto;
 import com.exam.useful.domain.post.dto.PostSaveDto;
 import com.exam.useful.domain.post.dto.PostUpdateDto;
-import com.exam.useful.service.post.PostService;
+import com.exam.useful.usecase.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

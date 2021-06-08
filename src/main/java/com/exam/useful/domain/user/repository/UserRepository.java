@@ -1,4 +1,4 @@
-package com.exam.useful.repository;
+package com.exam.useful.domain.user.repository;
 
 import com.exam.useful.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
