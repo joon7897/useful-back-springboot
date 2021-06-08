@@ -1,6 +1,7 @@
 package com.exam.useful.adapter.user;
 
 import com.exam.useful.usecase.user.PersistUserUseCase;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class UserController {
 //        return userService.getUserByEmail(email);
 //    }
 
+    @Operation(summary = "[User] 등록 API" , description = "유저 생성하는 API")
     @PostMapping("/")
     public String persistUser(@RequestBody UserRequest.PersistUser userRequest) {
 
