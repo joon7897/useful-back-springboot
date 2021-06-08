@@ -1,0 +1,3 @@
+### Ping Check Return Pong
+GET localhost:8080/alb/ping
+

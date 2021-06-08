@@ -6,8 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    #    url: jdbc:mariadb://localhost:3307/test_dev?serverTimezone=UTC&characterEncoding=UTF-8
-    url: jdbc:mariadb://119.192.227.70:9999/trace_price_dev?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mariadb://119.192.227.70:9999/trace_price_dev?verifyServerCertificate=false&allowPublicKeyRetrieval=true&useSSL=false&requireSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=20480
     username: root
     password: akfldk2!
   security:
