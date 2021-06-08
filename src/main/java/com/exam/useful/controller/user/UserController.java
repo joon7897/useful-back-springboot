@@ -24,7 +24,8 @@ public class UserController {
     public List<UserResponseDto> findAll() {
         return userService.getUsers();
     }
-    
+
+    @Operation(summary = "[User] Email로 User 조회 API" , description = " find User by Email API Description")
     @GetMapping("/{email}")
     public User findByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
