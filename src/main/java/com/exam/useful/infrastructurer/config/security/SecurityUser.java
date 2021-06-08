@@ -5,9 +5,9 @@ import org.springframework.security.core.userdetails.User;
 
 public class SecurityUser extends User {
 
-    private com.exam.useful.domain.user.User user;
+    private com.exam.useful.domain.user.model.User user;
 
-    public SecurityUser(com.exam.useful.domain.user.User user){
+    public SecurityUser(com.exam.useful.domain.user.model.User user){
         super(user.getId().toString(), user.getPassword(), AuthorityUtils.createAuthorityList(user.getRole().toString()));
 
         this.user = user;

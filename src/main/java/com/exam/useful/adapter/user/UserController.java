@@ -1,14 +1,9 @@
 package com.exam.useful.adapter.user;
 
-import com.exam.useful.domain.user.User;
-import com.exam.useful.domain.user.dto.UserResponseDto;
 import com.exam.useful.usecase.user.PersistUserUseCase;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Tag(name = "[User] User 관련 API")
 @RequestMapping("/api/user")

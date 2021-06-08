@@ -1,7 +1,7 @@
 package com.exam.useful.domain.user.dto;
 
-import com.exam.useful.domain.user.User;
-import com.exam.useful.usecase.user.ERole;
+import com.exam.useful.domain.user.model.User;
+import com.exam.useful.domain.user.assets.Role;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,14 @@ public class UserSaveDto {
     private String password;
     private String userName;
     private String email;
-    private ERole role;
+    private Role role;
     private Boolean useYn;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Builder
-    public UserSaveDto(String password, String userName, String email, ERole role, Boolean useYn) {
+    public UserSaveDto(String password, String userName, String email, Role role, Boolean useYn) {
         this.password = password;
         this.userName = userName;
         this.email = email;

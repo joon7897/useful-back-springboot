@@ -1,6 +1,6 @@
 package com.exam.useful.domain.user.dto;
 
-import com.exam.useful.domain.user.User;
+import com.exam.useful.domain.user.model.User;
 import lombok.Getter;
 
 @Getter

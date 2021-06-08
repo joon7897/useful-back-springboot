@@ -1,8 +1,6 @@
-package com.exam.useful.domain.user;
+package com.exam.useful.domain.user.model;
 
-import com.exam.useful.usecase.user.ERole;
-import lombok.Builder;
-import lombok.Data;
+import com.exam.useful.domain.user.assets.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -38,7 +36,7 @@ public class User {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private ERole role;
+    private Role role;
 
     @Column(nullable = false)
     private Boolean useYn;

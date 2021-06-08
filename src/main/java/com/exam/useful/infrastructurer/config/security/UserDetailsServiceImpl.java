@@ -1,6 +1,6 @@
 package com.exam.useful.infrastructurer.config.security;
 
-import com.exam.useful.domain.user.User;
+import com.exam.useful.domain.user.model.User;
 import com.exam.useful.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,7 @@
 package com.exam.useful.usecase.user;
 
-import com.exam.useful.domain.user.User;
+import com.exam.useful.domain.user.model.User;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 public class UserDTO {
 
@@ -14,7 +13,7 @@ public class UserDTO {
         }
 
         public User toEntity() {
-            return User.builder().build();
+            return new User();
         }
     }
 }

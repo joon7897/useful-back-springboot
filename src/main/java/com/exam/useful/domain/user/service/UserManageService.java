@@ -1,6 +1,6 @@
 package com.exam.useful.domain.user.service;
 
-import com.exam.useful.domain.user.User;
+import com.exam.useful.domain.user.model.User;
 import com.exam.useful.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
