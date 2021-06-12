@@ -1,6 +1,6 @@
 package com.exam.useful.domain.goods.dto;
 
-import com.exam.useful.domain.goods.Goods;
+import com.exam.useful.domain.goods.model.Goods;
 import lombok.Builder;
 import lombok.Getter;
 
