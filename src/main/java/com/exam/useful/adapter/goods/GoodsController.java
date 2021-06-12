@@ -1,20 +1,25 @@
 package com.exam.useful.adapter.goods;
 
-import com.exam.useful.usecase.goods.GoodsService;
+import com.exam.useful.usecase.goods.PersistGoodsUseCase;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "[Goods] Goods API")
 @RequestMapping("/api/goods")
 @RestController
 @RequiredArgsConstructor
 public class GoodsController {
-    private final GoodsService goodsService;
 
-    @GetMapping("/{goodsNo}")
-    public String getMusinsaGoods(@PathVariable String goodsNo){
-        return goodsService.getMusinsaGoods(goodsNo);
+    private final PersistGoodsUseCase persistGoodsUseCase;
+
+    @Operation(summary = "[Goods] 등록 API" , description = "상품 추가 API")
+    @PostMapping("/")
+    public String persistUser(@RequestBody GoodsRequest.PersistGoods persistGoods) {
+
+        persistGoodsUseCase.persistGoods(persistGoods.toWrapper());
+
+        return "";
     }
 }

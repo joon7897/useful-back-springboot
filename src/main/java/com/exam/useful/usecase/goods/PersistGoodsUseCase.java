@@ -1,20 +1,19 @@
-package com.exam.useful.usecase.user;
+package com.exam.useful.usecase.goods;
 
+import com.exam.useful.domain.goods.service.GoodsManageService;
 import com.exam.useful.domain.user.service.UserManageService;
+import com.exam.useful.usecase.user.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PersistUserUseCase {
+public class PersistGoodsUseCase {
 
-    private final PasswordEncoder passwordEncoder;
-    private final UserManageService userManageService;
+    private final GoodsManageService goodsManageService;
 
-    public void persistUser(UserDTO.PersistUser persistUser) {
-
-        String encryptPassword = passwordEncoder.encode(persistUser.getPassword());
-        userManageService.persistUser(persistUser.toEntity(encryptPassword));
+    public void persistGoods(GoodsDTO.PersistGoods persistGoods) {
+        goodsManageService.persistGoods(persistGoods.toEntity());
     }
 }
