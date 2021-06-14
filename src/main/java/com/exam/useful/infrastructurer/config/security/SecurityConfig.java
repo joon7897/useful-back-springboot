@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 //        http.authorizeRequests().antMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN");
 //        http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
 
-//        http.csrf().disable(); // TODO 나중에 수정필요
+//        http.csrf().disable();
 
 //        http.formLogin().loginPage("/login").defaultSuccessUrl("/", true); // 로그인
 //        http.formLogin().loginProcessingUrl("/loginAction").defaultSuccessUrl("/", true); // 로그인액션(POST)

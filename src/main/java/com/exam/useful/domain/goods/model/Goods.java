@@ -1,11 +1,14 @@
-package com.exam.useful.domain.goods;
+package com.exam.useful.domain.goods.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
@@ -73,50 +76,50 @@ public class Goods {
     @UpdateTimestamp
     private LocalDateTime modifyDate;// 수정일시
 
-    public static Goods of(String goodsNo, String goodsNm, String goodsNmEng, String saleStatCl, String sex, String accBuyYn, String itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, String normalPrice, String price, String brand, String optKindCd, String brandNm, String brandNmEng, String sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, String estimateCnt, String comId, String img, String goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, String limitedMinQty, String limitedMaxQty, String usedYn, String offlineGoodsYn, String regDm) {
-        return new Goods(goodsNo, goodsNm, goodsNmEng, saleStatCl, sex, accBuyYn, itemCatCd, category, baseCategoryName, seasonTypeNm, similarNo, normalPrice, price, brand, optKindCd, brandNm, brandNmEng, sizeOptKind, sizeOptKindNm, offlineComId, season, goodsType, estimateCnt, comId, img, goodsSub, restockYn, ordersGraphYn, esPageviewYn, ptnDcYn, limitedQtyYn, limitedMinQty, limitedMaxQty, usedYn, offlineGoodsYn, regDm);
-    }
-
-    private Goods(String goodsNo, String goodsNm, String goodsNmEng, String saleStatCl, String sex, String accBuyYn, String itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, String normalPrice, String price, String brand, String optKindCd, String brandNm, String brandNmEng, String sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, String estimateCnt, String comId, String img, String goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, String limitedMinQty, String limitedMaxQty, String usedYn, String offlineGoodsYn, String regDm) {
+    private Goods(String goodsNo, String goodsNm, String goodsNmEng, int saleStatCl, int sex, String accBuyYn, int itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, int normalPrice, int price, String brand, String optKindCd, String brandNm, String brandNmEng, int sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, int estimateCnt, String comId, String img, int goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, int limitedMinQty, int limitedMaxQty, String usedYn, String offlineGoodsYn, String regDm) {
         this.goodsNo = goodsNo;
         this.goodsNm = goodsNm;
         this.goodsNmEng = goodsNmEng;
-        this.saleStatCl = Integer.parseInt(saleStatCl);
-        this.sex = Integer.parseInt(sex);
+        this.saleStatCl = saleStatCl;
+        this.sex = sex;
         this.accBuyYn = accBuyYn;
-        this.itemCatCd = Integer.parseInt(itemCatCd);
+        this.itemCatCd = itemCatCd;
         this.category = category;
         this.baseCategoryName = baseCategoryName;
         this.seasonTypeNm = seasonTypeNm;
         this.similarNo = similarNo;
-        this.normalPrice = Integer.parseInt(normalPrice);
-        this.price = Integer.parseInt(price);
+        this.normalPrice = normalPrice;
+        this.price = price;
         this.brand = brand;
         this.optKindCd = optKindCd;
         this.brandNm = brandNm;
         this.brandNmEng = brandNmEng;
-        this.sizeOptKind = Integer.parseInt(sizeOptKind);
+        this.sizeOptKind = sizeOptKind;
         this.sizeOptKindNm = sizeOptKindNm;
         this.offlineComId = offlineComId;
         this.season = season;
         this.goodsType = goodsType;
-        this.estimateCnt = Integer.parseInt(estimateCnt);
+        this.estimateCnt = estimateCnt;
         this.comId = comId;
         this.img = img;
-        this.goodsSub = Integer.parseInt(goodsSub);
+        this.goodsSub = goodsSub;
         this.restockYn = restockYn;
         this.ordersGraphYn = ordersGraphYn;
         this.esPageviewYn = esPageviewYn;
         this.ptnDcYn = ptnDcYn;
         this.limitedQtyYn = limitedQtyYn;
-        this.limitedMinQty = Integer.parseInt(limitedMinQty);
-        this.limitedMaxQty = Integer.parseInt(limitedMaxQty);
+        this.limitedMinQty = limitedMinQty;
+        this.limitedMaxQty = limitedMaxQty;
         this.usedYn = usedYn;
         this.offlineGoodsYn = offlineGoodsYn;
         this.regDm = regDm;
     }
 
-    public void updatePrice(int price) {
+    public static Goods createGoods(String goodsNo, String goodsNm, String goodsNmEng, int saleStatCl, int sex, String accBuyYn, int itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, int normalPrice, int price, String brand, String optKindCd, String brandNm, String brandNmEng, int sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, int estimateCnt, String comId, String img, int goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, int limitedMinQty, int limitedMaxQty, String usedYn, String offlineGoodsYn, String regDm) {
+        return new Goods(goodsNo, goodsNm, goodsNmEng, saleStatCl, sex, accBuyYn, itemCatCd, category, baseCategoryName, seasonTypeNm, similarNo, normalPrice, price, brand, optKindCd, brandNm, brandNmEng, sizeOptKind, sizeOptKindNm, offlineComId, season, goodsType, estimateCnt, comId, img, goodsSub, restockYn, ordersGraphYn, esPageviewYn, ptnDcYn, limitedQtyYn, limitedMinQty, limitedMaxQty, usedYn, offlineGoodsYn, regDm);
+    }
+
+    public void updatePrice(int price){
         this.price = price;
     }
 }
