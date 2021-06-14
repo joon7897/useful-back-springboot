@@ -4,8 +4,6 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import datetime
 import json
-import re
-import urllib.request
 import bs4
 import requests
 from util import util
