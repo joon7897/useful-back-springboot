@@ -1,6 +1,6 @@
-package com.exam.useful.repository;
+package com.exam.useful.domain.goods.repository;
 
-import com.exam.useful.domain.goods.Goods;
+import com.exam.useful.domain.goods.model.Goods;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GoodsRepository extends JpaRepository<Goods, Long> {
