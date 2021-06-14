@@ -118,4 +118,8 @@ public class Goods {
     public static Goods createGoods(String goodsNo, String goodsNm, String goodsNmEng, int saleStatCl, int sex, String accBuyYn, int itemCatCd, String category, String baseCategoryName, String seasonTypeNm, String similarNo, int normalPrice, int price, String brand, String optKindCd, String brandNm, String brandNmEng, int sizeOptKind, String sizeOptKindNm, String offlineComId, String season, String goodsType, int estimateCnt, String comId, String img, int goodsSub, String restockYn, String ordersGraphYn, String esPageviewYn, String ptnDcYn, String limitedQtyYn, int limitedMinQty, int limitedMaxQty, String usedYn, String offlineGoodsYn, String regDm) {
         return new Goods(goodsNo, goodsNm, goodsNmEng, saleStatCl, sex, accBuyYn, itemCatCd, category, baseCategoryName, seasonTypeNm, similarNo, normalPrice, price, brand, optKindCd, brandNm, brandNmEng, sizeOptKind, sizeOptKindNm, offlineComId, season, goodsType, estimateCnt, comId, img, goodsSub, restockYn, ordersGraphYn, esPageviewYn, ptnDcYn, limitedQtyYn, limitedMinQty, limitedMaxQty, usedYn, offlineGoodsYn, regDm);
     }
+
+    public void updatePrice(int price){
+        this.price = price;
+    }
 }

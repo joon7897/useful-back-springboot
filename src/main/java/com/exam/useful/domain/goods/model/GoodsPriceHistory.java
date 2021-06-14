@@ -1,4 +1,4 @@
-package com.exam.useful.domain.goods.history;
+package com.exam.useful.domain.goods.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
