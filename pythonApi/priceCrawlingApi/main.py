@@ -13,7 +13,7 @@ app = Flask (__name__)
 
 
 
-@app.route('/productInfo/<goodsNo>')
+@app.route('/productInfo/<goodsNo>', methods=['GET'])
 def callProductInfo(goodsNo):
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
@@ -67,7 +67,7 @@ def callProductInfo(goodsNo):
 
 
 
-@app.route('/productInfo')
+@app.route('/productInfo', methods=['GET'])
 def callProductInfoTest():
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
