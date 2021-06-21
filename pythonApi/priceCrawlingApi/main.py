@@ -6,6 +6,7 @@ import datetime
 import json
 import bs4
 import requests
+from pprint import pprint
 from util import util
 from flask import Flask
 app = Flask (__name__)
@@ -50,12 +51,10 @@ def callProductInfo(goodsNo):
                 subLeftStr = chkStr[chkStr.find(subLeftChar) + len(subLeftChar):]
                 subRightStr = subLeftStr[:subLeftStr.find(subRightChar, 0)]
 
-                print('subLeftStr####################################')
-                print(subLeftStr)
-                print('subRightStr####################################')
-                print(subRightStr)
 
                 jsonResult = json.loads(subRightStr)
+                jsonResult.get("productInfo").pop("img_prd_list")                   ## 불필요 key제거 ex) image관련 정보
+
                 print(json.dumps(jsonResult, indent=4, sort_keys=True, ensure_ascii=False))
             # else:
             # print('Musinsa Crawling result ERROR! Check HTML Tag Exist....')
@@ -112,6 +111,8 @@ def callProductInfoTest():
                 print(subRightStr)
 
                 jsonResult = json.loads(subRightStr)
+                jsonResult.get("productInfo").pop("img_prd_list")                   ## 불필요 key제거 ex) image관련 정보
+
                 print(json.dumps(jsonResult, indent=4, sort_keys=True, ensure_ascii=False))
             # else:
             # print('Musinsa Crawling result ERROR! Check HTML Tag Exist....')
