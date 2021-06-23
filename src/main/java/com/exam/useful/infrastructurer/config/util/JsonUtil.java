@@ -21,12 +21,12 @@ public class JsonUtil {
      * @return Map
      * @throws JsonProcessingException
      */
-    public static Map<String, String> convStringToMap(String str) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> map = mapper.readValue(str, Map.class);
-
-        return map;
-    }
+//    public static Map<String, String> convStringToMap(String str) throws JsonProcessingException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        Map<String, String> map = mapper.readValue(str, Map.class);
+//
+//        return map;
+//    }
 
     /**
      * Map → JSONObject

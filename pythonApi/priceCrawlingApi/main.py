@@ -8,13 +8,11 @@ import bs4
 import requests
 from pprint import pprint
 from util import util
-from flask import Flask
+from flask import Flask, jsonify
 app = Flask (__name__)
 
 
-
 @app.route('/productInfo/<goodsNo>', methods=['GET'])
-
 def callProductInfo(goodsNo):
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
@@ -65,7 +63,8 @@ def callProductInfo(goodsNo):
         print(response.status_code)
         return response.content
 
-    return json.dumps(jsonResult, indent=2, sort_keys=True, ensure_ascii=False)
+    return jsonify(jsonResult)
+#     return json.dumps(jsonResult, indent=2, sort_keys=True, ensure_ascii=False, headers)
 
 
 

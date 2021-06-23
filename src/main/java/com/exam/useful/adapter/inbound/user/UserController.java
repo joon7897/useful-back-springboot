@@ -1,4 +1,4 @@
-package com.exam.useful.adapter.user;
+package com.exam.useful.adapter.inbound.user;
 
 import com.exam.useful.usecase.user.PersistUserUseCase;
 import io.swagger.v3.oas.annotations.Operation;

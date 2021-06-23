@@ -1,4 +1,4 @@
-package com.exam.useful.adapter.ping;
+package com.exam.useful.adapter.inbound.ping;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

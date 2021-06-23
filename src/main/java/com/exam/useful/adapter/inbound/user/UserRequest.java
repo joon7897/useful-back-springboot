@@ -1,6 +1,5 @@
-package com.exam.useful.adapter.user;
+package com.exam.useful.adapter.inbound.user;
 
-import com.exam.useful.domain.user.assets.Role;
 import com.exam.useful.usecase.user.UserDTO;
 
 public class UserRequest {
