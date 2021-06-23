@@ -14,6 +14,7 @@ app = Flask (__name__)
 
 
 @app.route('/productInfo/<goodsNo>', methods=['GET'])
+
 def callProductInfo(goodsNo):
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
@@ -55,6 +56,7 @@ def callProductInfo(goodsNo):
                 jsonResult = json.loads(subRightStr)
                 jsonResult.get("productInfo").pop("img_prd_list")                   ## 불필요 key제거 ex) image관련 정보
 
+
                 print(json.dumps(jsonResult, indent=4, sort_keys=True, ensure_ascii=False))
             # else:
             # print('Musinsa Crawling result ERROR! Check HTML Tag Exist....')
@@ -68,6 +70,7 @@ def callProductInfo(goodsNo):
 
 
 @app.route('/productInfo', methods=['GET'])
+
 def callProductInfoTest():
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
