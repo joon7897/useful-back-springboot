@@ -6,10 +6,23 @@ import datetime
 import json
 import bs4
 import requests
+import schedule
+import time
+
 from pprint import pprint
+#from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from scheduleJob import category
 from util import util
 from flask import Flask, jsonify
+
+# 백그라운드에 데몬으로 스케줄 동작.
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(category.getCategoryListJob,'interval',seconds=10)  # 카테고리 리스트 가져오는 job
+sched.start()
+
 app = Flask (__name__)
+
 
 
 @app.route('/productInfo/<goodsNo>', methods=['GET'])
@@ -69,7 +82,6 @@ def callProductInfo(goodsNo):
 
 
 @app.route('/productInfo', methods=['GET'])
-
 def callProductInfoTest():
     ## 크롤링에 필요한 정보.
     headers = {'User-Agent': 'Mozilla/5.0'}
@@ -125,11 +137,25 @@ def callProductInfoTest():
 
     return json.dumps(jsonResult, indent=2, sort_keys=True, ensure_ascii=False)
 
+@app.route('/schedule', methods=['GET'])
+def test():
+    print("TEST CALL!!")
+    schedule.every(10).seconds.do(category.getCategoryListJob())
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+
     app.run()
+
+
+
+
+
 
 
 
